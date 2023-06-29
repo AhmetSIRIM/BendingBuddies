@@ -1,11 +1,17 @@
 package com.whale.bendingbuddies.data.api
 
-import com.whale.bendingbuddies.data.dto.BendingBuddyResponse
+import com.whale.bendingbuddies.data.dto.BendingBuddyResponseItem
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface BendingBuddyApi {
 
     @GET("characters")
-    suspend fun getAllBendingBuddies(): BendingBuddyResponse
+    suspend fun getAllBendingBuddies(): List<BendingBuddyResponseItem>?
+
+    @GET("characters")
+    suspend fun getBendingBuddiesByName(
+        @Query("name") bendingBuddyName: String
+    ): BendingBuddyResponseItem
 
 }
