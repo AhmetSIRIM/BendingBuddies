@@ -10,7 +10,7 @@ interface BendingBuddyApi {
     suspend fun getAllBendingBuddies(): List<BendingBuddyResponseItem>?
 
     @GET("characters")
-    suspend fun getBendingBuddiesByName(
+    suspend fun getBendingBuddyByName(
         @Query("name") bendingBuddyName: String
     ): BendingBuddyResponseItem
 
