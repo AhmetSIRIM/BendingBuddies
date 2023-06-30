@@ -32,12 +32,18 @@ android {
     kotlinOptions {
         jvmTarget = '18'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
 
-    // AndroidX
+    // AndroidXCore
     implementation "androidx.core:core-ktx:$android_core_ktx_version"
+
+    // AndroidXFragment
+    implementation "androidx.fragment:fragment-ktx:$android_fragment_ktx_version"
 
     // AppCompat
     implementation "androidx.appcompat:appcompat:$app_compat_version"
@@ -57,7 +63,17 @@ dependencies {
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+//    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+//    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    // Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
+    // Coil
+    implementation "io.coil-kt:coil:$coil_version"
 
     // Test
     testImplementation 'junit:junit:4.13.2'

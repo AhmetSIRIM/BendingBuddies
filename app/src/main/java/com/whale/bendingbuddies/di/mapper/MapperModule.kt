@@ -6,26 +6,34 @@ import com.whale.bendingbuddies.data.mapper.BendingBuddyListMapperImpl
 import com.whale.bendingbuddies.data.mapper.BendingBuddyMapper
 import com.whale.bendingbuddies.data.mapper.BendingBuddyMapperImpl
 import com.whale.bendingbuddies.domain.BendingBuddyEntity
+import com.whale.bendingbuddies.ui.home.BendingBuddyHomeUiMapperImpl
+import com.whale.bendingbuddies.ui.home.HomeUiData
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewComponent
+import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
-@InstallIn(ViewComponent::class)
+@InstallIn(ViewModelComponent::class)
 abstract class MapperModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun bindBendingBuddyListMapperImpl(
+    abstract fun bindBendingBuddyMapper(
+        bendingBuddyMapperImpl: BendingBuddyMapperImpl
+    ): BendingBuddyMapper<BendingBuddyResponseItem, BendingBuddyEntity>
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindBendingBuddyListMapper(
         bendingBuddyListMapperImpl: BendingBuddyListMapperImpl
     ): BendingBuddyListMapper<BendingBuddyResponseItem, BendingBuddyEntity>
 
     @Binds
     @ViewModelScoped
-    abstract fun bindBendingBuddyMapperImpl(
-        bendingBuddyMapperImpl: BendingBuddyMapperImpl
-    ): BendingBuddyMapper<BendingBuddyResponseItem, BendingBuddyEntity>
+    abstract fun bindBendingBuddyHomeUiMapper(
+        bendingBuddyHomeUiMapperImpl: BendingBuddyHomeUiMapperImpl
+    ): BendingBuddyListMapper<BendingBuddyEntity, HomeUiData>
 
 }

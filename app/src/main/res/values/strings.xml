@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BendingBuddies</string>
+    <string name="enter_character_name">Enter character name</string>
+    <string name="unknown_error">An unknown error occurred</string>
 </resources>
