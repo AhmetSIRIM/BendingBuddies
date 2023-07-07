@@ -10,7 +10,7 @@ class BendingBuddyMapperImpl @Inject constructor() :
     override fun map(input: BendingBuddyResponseItem?): BendingBuddyEntity {
         return BendingBuddyEntity(
             name = input?.name.orEmpty(),
-            photoUrl = input?.photoUrl.orEmpty(),
+            imageUrl = input?.photoUrl.orEmpty(),
             affiliation = input?.affiliation.orEmpty()
         )
     }

@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -63,6 +64,9 @@ dependencies {
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
 //    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 //    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
 //    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'

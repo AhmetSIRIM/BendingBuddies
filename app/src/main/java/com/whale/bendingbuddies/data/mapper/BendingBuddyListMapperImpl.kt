@@ -11,7 +11,7 @@ class BendingBuddyListMapperImpl @Inject constructor() :
         return input?.map {
             BendingBuddyEntity(
                 name = it.name.orEmpty(),
-                photoUrl = it.photoUrl.orEmpty(),
+                imageUrl = it.photoUrl.orEmpty(),
                 affiliation = it.affiliation.orEmpty()
             )
         } ?: emptyList()

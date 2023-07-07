@@ -1,4 +1,4 @@
-package com.whale.bendingbuddies.ui.home
+package com.whale.bendingbuddies.ui.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,37 +7,34 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.whale.bendingbuddies.databinding.FragmentHomeBinding
+import com.whale.bendingbuddies.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class DetailFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
-    private val homeViewModel by viewModels<HomeViewModel>()
-    private val adapter = BendingBuddyRecyclerViewAdapter()
+    private lateinit var binding: FragmentDetailBinding
+    private val detailViewModel by viewModels<DetailViewModel>()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
-        binding.bendingBuddyListRecyclerView.adapter = this.adapter
+        binding = FragmentDetailBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        observeHomeUiState()
+        observeDetailUiState()
 
     }
 
-    private fun observeHomeUiState() {
-        homeViewModel.bendingBuddyHomeUiState.observe(viewLifecycleOwner) {
+    private fun observeDetailUiState() {
+        detailViewModel.bendingBuddyDetailUiState.observe(viewLifecycleOwner) {
             when (it) {
-                is HomeUiState.Error -> {
+                is DetailUiState.Error -> {
                     Toast.makeText(
                         requireContext(),
                         getString(it.message),
@@ -45,7 +42,7 @@ class HomeFragment : Fragment() {
                     ).show()
                 }
 
-                HomeUiState.Loading -> {
+                DetailUiState.Loading -> {
                     Toast.makeText(
                         requireContext(),
                         "Loading",
@@ -53,15 +50,15 @@ class HomeFragment : Fragment() {
                     ).show()
                 }
 
-                is HomeUiState.Success -> {
-                    handleSuccessHomeUiState(it.homeUiDataList)
+                is DetailUiState.Success -> {
+                    handleSuccessDetailUiState(it.detailUiData)
                 }
             }
         }
     }
 
-    private fun handleSuccessHomeUiState(homeUiDataList: List<HomeUiData>) {
-        adapter.updateHomeUiDataList(homeUiDataList)
+    private fun handleSuccessDetailUiState(detailUiData: DetailUiData) {
+        binding.bendingBuddyDetail.setBendingBuddyDetailData(detailUiData)
     }
 
 }

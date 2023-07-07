@@ -6,6 +6,8 @@ import com.whale.bendingbuddies.data.mapper.BendingBuddyListMapperImpl
 import com.whale.bendingbuddies.data.mapper.BendingBuddyMapper
 import com.whale.bendingbuddies.data.mapper.BendingBuddyMapperImpl
 import com.whale.bendingbuddies.domain.BendingBuddyEntity
+import com.whale.bendingbuddies.ui.detail.BendingBuddyDetailUiMapperImpl
+import com.whale.bendingbuddies.ui.detail.DetailUiData
 import com.whale.bendingbuddies.ui.home.BendingBuddyHomeUiMapperImpl
 import com.whale.bendingbuddies.ui.home.HomeUiData
 import dagger.Binds
@@ -35,5 +37,11 @@ abstract class MapperModule {
     abstract fun bindBendingBuddyHomeUiMapper(
         bendingBuddyHomeUiMapperImpl: BendingBuddyHomeUiMapperImpl
     ): BendingBuddyListMapper<BendingBuddyEntity, HomeUiData>
+
+    @Binds
+    @ViewModelScoped
+    abstract fun bindBendingBuddyDetailUiMapper(
+        bendingBuddyDetailUiMapperImpl: BendingBuddyDetailUiMapperImpl
+    ): BendingBuddyMapper<BendingBuddyEntity, DetailUiData>
 
 }

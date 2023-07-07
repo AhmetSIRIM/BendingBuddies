@@ -12,7 +12,7 @@ class BendingBuddyHomeUiMapperImpl @Inject constructor() :
         return input?.map {
             HomeUiData(
                 name = it.name,
-                imageUrl = it.photoUrl
+                imageUrl = it.imageUrl
             )
         } ?: emptyList()
 

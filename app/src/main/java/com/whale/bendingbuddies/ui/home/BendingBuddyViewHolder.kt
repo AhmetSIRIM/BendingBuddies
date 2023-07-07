@@ -15,8 +15,8 @@ class BendingBuddyViewHolder(
         }
     }
 
-    override fun onBind(data: HomeUiData) {
-        binding.bendingBuddyComponent.setBendingBuddyData(data)
+    override fun onBind(viewHolderData: HomeUiData) {
+        binding.bendingBuddyComponent.setBendingBuddyHomeData(viewHolderData)
     }
 
 }

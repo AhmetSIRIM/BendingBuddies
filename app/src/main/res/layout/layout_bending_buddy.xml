@@ -29,12 +29,23 @@
                 android:id="@+id/bending_buddy_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="4dp"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:text="Name: " />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bending_buddy_affiliation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="Affiliation: " />
 
         </LinearLayout>
 
