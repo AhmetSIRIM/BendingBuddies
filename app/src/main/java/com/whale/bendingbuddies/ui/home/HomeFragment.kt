@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.whale.bendingbuddies.databinding.FragmentHomeBinding
 import com.whale.bendingbuddies.utility.observeTextChanges
 import com.whale.bendingbuddies.utility.okWith
@@ -39,12 +40,24 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        homeViewModel.getAllBendingBuddies()
+
+        initPokeListAdapter()
+
         observeSearchTextChanges()
 
         observeHomeUiState()
 
-        homeViewModel.getAllBendingBuddies()
+    }
 
+    private fun initPokeListAdapter() {
+        adapter.setOnItemClickListener {
+            val homeUiData = adapter.getItem(it)
+            val action =
+                HomeFragmentDirections.actionHomeFragmentToDetailFragment(homeUiData.name)
+            findNavController().navigate(action)
+        }
+        binding.bendingBuddyListRecyclerView.adapter = adapter
     }
 
     private fun observeHomeUiState() {

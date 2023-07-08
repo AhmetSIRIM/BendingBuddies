@@ -24,7 +24,7 @@ class DetailViewModel @Inject constructor(
 
     fun getBendingBuddyByName(bendingBuddyName: String) {
         viewModelScope.launch {
-            getBendingBuddyByNameUseCase(bendingBuddyName).collect() {
+            getBendingBuddyByNameUseCase(bendingBuddyName).collect {
                 when (it) {
 
                     is NetworkResponseState.Error -> {

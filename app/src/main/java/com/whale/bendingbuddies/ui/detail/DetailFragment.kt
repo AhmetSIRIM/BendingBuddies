@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.whale.bendingbuddies.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,6 +16,7 @@ class DetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailBinding
     private val detailViewModel by viewModels<DetailViewModel>()
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +28,8 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        detailViewModel.getBendingBuddyByName(args.name)
 
         observeDetailUiState()
 
@@ -58,7 +62,16 @@ class DetailFragment : Fragment() {
     }
 
     private fun handleSuccessDetailUiState(detailUiData: DetailUiData) {
-        binding.bendingBuddyDetail.setBendingBuddyDetailData(detailUiData)
+        binding.bendingBuddyDetail.apply {
+            setBendingBuddyDetailData(detailUiData)
+            setNameTextSize(NAME_TEXT_SIZE_IN_SP)
+            setAffiliationTextSize(AFFILIATION_TEXT_SIZE_IN_SP)
+        }
+    }
+
+    companion object {
+        private const val NAME_TEXT_SIZE_IN_SP = 24f
+        private const val AFFILIATION_TEXT_SIZE_IN_SP = 18f
     }
 
 }
