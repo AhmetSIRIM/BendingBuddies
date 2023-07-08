@@ -18,7 +18,7 @@ class RemoteDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getBendingBuddyByName(bendingBuddyName: String): NetworkResponseState<BendingBuddyResponseItem> {
+    override suspend fun getBendingBuddyByName(bendingBuddyName: String): NetworkResponseState<List<BendingBuddyResponseItem>> {
         return try {
             val response = bendingBuddyApi.getBendingBuddyByName(bendingBuddyName)
             NetworkResponseState.Success(response)

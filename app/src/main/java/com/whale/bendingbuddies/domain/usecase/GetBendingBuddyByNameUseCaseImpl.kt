@@ -2,7 +2,7 @@ package com.whale.bendingbuddies.domain.usecase
 
 import com.whale.bendingbuddies.data.NetworkResponseState
 import com.whale.bendingbuddies.data.dto.BendingBuddyResponseItem
-import com.whale.bendingbuddies.data.mapper.BendingBuddyMapper
+import com.whale.bendingbuddies.data.mapper.BendingBuddyListMapper
 import com.whale.bendingbuddies.data.repository.BendingBuddyRepository
 import com.whale.bendingbuddies.domain.BendingBuddyEntity
 import kotlinx.coroutines.flow.Flow
@@ -11,10 +11,10 @@ import javax.inject.Inject
 
 class GetBendingBuddyByNameUseCaseImpl @Inject constructor(
     private val bendingBuddyRepository: BendingBuddyRepository,
-    private val bendingBuddyMapper: BendingBuddyMapper<BendingBuddyResponseItem, BendingBuddyEntity>
+    private val bendingBuddyListMapper: BendingBuddyListMapper<BendingBuddyResponseItem, BendingBuddyEntity>
 ) : GetBendingBuddyByNameUseCase {
 
-    override fun invoke(bendingBuddyName: String): Flow<NetworkResponseState<BendingBuddyEntity>> {
+    override fun invoke(bendingBuddyName: String): Flow<NetworkResponseState<List<BendingBuddyEntity>>> {
 
         return flow {
 
@@ -28,7 +28,7 @@ class GetBendingBuddyByNameUseCaseImpl @Inject constructor(
 
                 is NetworkResponseState.Success -> emit(
                     NetworkResponseState.Success(
-                        bendingBuddyMapper.map(response.result)
+                        bendingBuddyListMapper.map(response.result)
                     )
                 )
 

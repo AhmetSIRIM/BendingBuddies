@@ -25,7 +25,7 @@ class BendingBuddyRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getBendingBuddyByName(bendingBuddyName: String): NetworkResponseState<BendingBuddyResponseItem> {
+    override suspend fun getBendingBuddyByName(bendingBuddyName: String): NetworkResponseState<List<BendingBuddyResponseItem>> {
         return withContext(ioDispatcher) {
             try {
                 remoteDataSource.getBendingBuddyByName(bendingBuddyName)

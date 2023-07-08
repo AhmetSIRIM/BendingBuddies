@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface GetBendingBuddyByNameUseCase {
 
-    operator fun invoke(bendingBuddyName: String): Flow<NetworkResponseState<BendingBuddyEntity>>
+    operator fun invoke(bendingBuddyName: String): Flow<NetworkResponseState<List<BendingBuddyEntity>>>
 
 }

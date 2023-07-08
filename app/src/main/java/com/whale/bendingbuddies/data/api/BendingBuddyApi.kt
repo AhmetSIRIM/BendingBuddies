@@ -13,6 +13,6 @@ interface BendingBuddyApi {
     @GET("characters")
     suspend fun getBendingBuddyByName(
         @Query("name") bendingBuddyName: String
-    ): BendingBuddyResponseItem
+    ): List<BendingBuddyResponseItem>?
 
 }
