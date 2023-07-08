@@ -12,6 +12,18 @@
         android:id="@+id/bending_buddy_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp">
+
+        <ProgressBar
+            android:id="@+id/loading_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:padding="125dp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </com.whale.bendingbuddies.ui.component.BendingBuddyComponent>
+
 
 </FrameLayout>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -48,15 +49,12 @@ class DetailFragment : Fragment() {
                 }
 
                 DetailUiState.Loading -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Loading",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    binding.loadingProgressBar.isVisible = true // setProgressBarVisible()
                 }
 
                 is DetailUiState.Success -> {
                     handleSuccessDetailUiState(it.detailUiData)
+                    binding.loadingProgressBar.isVisible = false
                 }
             }
         }

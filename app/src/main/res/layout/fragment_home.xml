@@ -36,4 +36,13 @@
         app:spanCount="2"
         tools:listitem="@layout/adapter_bending_buddy_item" />
 
+    <ProgressBar
+        android:id="@+id/loading_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:padding="130dp"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
