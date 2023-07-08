@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.whale.bendingbuddies.databinding.FragmentDetailBinding
+import com.whale.bendingbuddies.utility.trimWhitespaceAfterSpace
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,7 +30,7 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        detailViewModel.getBendingBuddyByName(args.name)
+        detailViewModel.getBendingBuddyByName(args.name.trimWhitespaceAfterSpace())
 
         observeDetailUiState()
 
