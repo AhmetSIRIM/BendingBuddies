@@ -12,12 +12,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.whale.bendingbuddies.databinding.FragmentHomeBinding
 import com.whale.bendingbuddies.utility.observeTextChanges
-import com.whale.bendingbuddies.utility.okWith
+import com.whale.bendingbuddies.utility.isLengthGreaterOrEqualTo
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -41,17 +40,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeViewModel.getAllBendingBuddies()
-
-        initPokeListAdapter()
-
         observeSearchTextChanges()
+
+        initBendingBuddyRecyclerViewAdapter()
 
         observeHomeUiState()
 
     }
 
-    private fun initPokeListAdapter() {
+    private fun initBendingBuddyRecyclerViewAdapter() {
         adapter.setOnItemClickListener {
             val homeUiData = adapter.getItem(it)
             val action =
@@ -64,6 +61,7 @@ class HomeFragment : Fragment() {
     private fun observeHomeUiState() {
         homeViewModel.bendingBuddyHomeUiState.observe(viewLifecycleOwner) {
             when (it) {
+
                 is HomeUiState.Error -> {
                     Toast.makeText(
                         requireContext(),
@@ -80,6 +78,7 @@ class HomeFragment : Fragment() {
                     handleSuccessHomeUiState(it.homeUiDataList)
                     binding.loadingProgressBar.isVisible = false
                 }
+
             }
         }
     }
@@ -91,10 +90,18 @@ class HomeFragment : Fragment() {
     @OptIn(FlowPreview::class)
     private fun observeSearchTextChanges() {
         binding.searchEditText.observeTextChanges()
-            .filter { it okWith MINIMUM_SEARCH_LENGTH }
             .debounce(SEARCH_DEBOUNCE_TIME_IN_MILLISECONDS)
             .distinctUntilChanged()
-            .onEach { homeViewModel.getBendingBuddyByName(it) }
+            .onEach { inputText ->
+                when {
+                    inputText.isBlank() -> {
+                        homeViewModel.getAllBendingBuddies()
+                    }
+                    inputText isLengthGreaterOrEqualTo MINIMUM_SEARCH_LENGTH -> {
+                        homeViewModel.getBendingBuddyByName(inputText)
+                    }
+                }
+            }
             .launchIn(lifecycleScope)
     }
 

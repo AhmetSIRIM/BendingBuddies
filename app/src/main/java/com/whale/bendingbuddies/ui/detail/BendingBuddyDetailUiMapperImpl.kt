@@ -16,6 +16,7 @@ class BendingBuddyDetailUiMapperImpl @Inject constructor() :
                 imageUrl = it.imageUrl
             )
         } ?: DetailUiData(null, null, null)
+
     }
 
 }

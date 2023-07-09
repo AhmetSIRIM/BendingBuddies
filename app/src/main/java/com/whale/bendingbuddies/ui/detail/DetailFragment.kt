@@ -49,7 +49,7 @@ class DetailFragment : Fragment() {
                 }
 
                 DetailUiState.Loading -> {
-                    binding.loadingProgressBar.isVisible = true // setProgressBarVisible()
+                    binding.loadingProgressBar.isVisible = true
                 }
 
                 is DetailUiState.Success -> {

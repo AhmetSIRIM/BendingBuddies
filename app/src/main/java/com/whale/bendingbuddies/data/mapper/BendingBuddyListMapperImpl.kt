@@ -8,6 +8,7 @@ class BendingBuddyListMapperImpl @Inject constructor() :
     BendingBuddyListMapper<BendingBuddyResponseItem, BendingBuddyEntity> {
 
     override fun map(input: List<BendingBuddyResponseItem>?): List<BendingBuddyEntity> {
+
         return input?.map {
             BendingBuddyEntity(
                 name = it.name.orEmpty(),
@@ -15,6 +16,7 @@ class BendingBuddyListMapperImpl @Inject constructor() :
                 affiliation = it.affiliation.orEmpty()
             )
         } ?: emptyList()
+
     }
 
 }

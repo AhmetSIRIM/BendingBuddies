@@ -1,6 +1,6 @@
 package com.whale.bendingbuddies.utility
 
-infix fun String.okWith(bottomBound: Int) = length >= bottomBound
+infix fun String.isLengthGreaterOrEqualTo(bottomBound: Int) = length >= bottomBound
 
-fun String.trimWhitespaceAfterSpace(): String = takeWhile { it != ' ' }.trim()
+fun String.trimWhitespaceAfterSpace() = takeWhile { it != ' ' }.trim()
 
