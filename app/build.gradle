@@ -86,4 +86,7 @@ dependencies {
     // Truth
     testImplementation "com.google.truth:truth:$truth_version"
 
+    // Mockito
+    testImplementation "org.mockito:mockito-core:$mockito_kotlin_version"
+
 }

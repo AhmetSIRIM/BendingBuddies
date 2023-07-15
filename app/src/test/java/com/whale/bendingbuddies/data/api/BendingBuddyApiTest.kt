@@ -63,9 +63,9 @@ class BendingBuddyApiTest {
         }
     }
 
-    /** Null check test of getAllBendingBuddies request */
+    /** Null check test of getAllBendingBuddies request response */
     @Test
-    fun `when getAllBendingBuddies request is not null`() {
+    fun `when getAllBendingBuddies request response is not null`() {
         runBlocking {
             enqueueResponse(SAMPLE_RESPONSE_FILE_NAME_FOR_GET_ALL_BENDING_BUDDIES)
 
@@ -89,7 +89,7 @@ class BendingBuddyApiTest {
         }
     }
 
-    /** Null check test of getBendingBuddyByName request with Korra input */
+    /** Null check test of getBendingBuddyByName request response with Korra input */
     @Test
     fun `when getBendingBuddyByName request is not null`() {
         runBlocking {
@@ -101,7 +101,7 @@ class BendingBuddyApiTest {
         }
     }
 
-    /** Result correctness test of getBendingBuddyByName request with Korra input */
+    /** Response correctness test of getBendingBuddyByName request with Korra input */
     @Test
     fun `when getBendingBuddyByName request with Korra parameter is return correct response`() {
         runBlocking {
