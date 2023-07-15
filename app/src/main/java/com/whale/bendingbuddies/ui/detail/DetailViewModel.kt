@@ -40,7 +40,7 @@ class DetailViewModel @Inject constructor(
                     is NetworkResponseState.Success -> {
                         _bendingBuddyDetailUiState.postValue(
                             DetailUiState.Success(
-                                bendingBuddyMapper.map(it.result?.first())
+                                bendingBuddyMapper.map(it.result.first())
                             )
                         )
                     }

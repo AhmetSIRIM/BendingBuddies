@@ -45,7 +45,7 @@ class BendingBuddyApiTest {
 
             val response = bendingBuddyApiForTest.getAllBendingBuddies()
 
-            assertThat(response?.first()).isInstanceOf(BendingBuddyResponseItem::class.java)
+            assertThat(response.first()).isInstanceOf(BendingBuddyResponseItem::class.java)
         }
     }
 
@@ -109,7 +109,7 @@ class BendingBuddyApiTest {
 
             val response = bendingBuddyApiForTest.getBendingBuddyByName(KORRA_PARAMETER)
 
-            assertThat(response?.first()?.name).isEqualTo(KORRA_PARAMETER)
+            assertThat(response.first().name).isEqualTo(KORRA_PARAMETER)
         }
     }
 

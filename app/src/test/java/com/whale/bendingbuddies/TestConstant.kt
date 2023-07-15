@@ -12,7 +12,7 @@ const val GET_BENDING_BUDDY_BY_NAME_PATH_WITH_KORRA_INPUT = "/characters?name=Ko
 const val KORRA_PARAMETER = "Korra"
 
 @VisibleForTesting
-val sampleBendingBuddyItem = BendingBuddyResponseItem(
+val sampleBendingBuddyResponseItem = BendingBuddyResponseItem(
     null,
     null,
     null,

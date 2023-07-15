@@ -1,9 +1,10 @@
 package com.whale.bendingbuddies.data.source
 
 import com.google.common.truth.Truth.assertThat
+import com.whale.bendingbuddies.KORRA_PARAMETER
 import com.whale.bendingbuddies.data.NetworkResponseState
 import com.whale.bendingbuddies.data.api.BendingBuddyApi
-import com.whale.bendingbuddies.sampleBendingBuddyItem
+import com.whale.bendingbuddies.sampleBendingBuddyResponseItem
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -24,30 +25,64 @@ internal class RemoteDataSourceImplTest {
         remoteDataSourceImplForTest = RemoteDataSourceImpl(bendingBuddyApiForTest)
     }
 
+    /** Success state test of getAllBendingBuddies function */
     @Test
     fun `when getAllBendingBuddies return state is success`() {
         runBlocking {
             Mockito.`when`(bendingBuddyApiForTest.getAllBendingBuddies())
                 .thenReturn(
-                    listOf(sampleBendingBuddyItem)
+                    listOf(sampleBendingBuddyResponseItem)
                 )
 
             val response = remoteDataSourceImplForTest.getAllBendingBuddies()
+
             assertThat(response).isInstanceOf(NetworkResponseState.Success::class.java)
         }
     }
 
-//    @Test // TODO (Ahmet) ---> getAllBendingBuddies() from RemoteDataSourceImpl did not return NetworkResponseState.Error. It will be refactored.
-//    fun `when getAllBendingBuddies return state is failure`() {
-//        runBlocking {
-//            Mockito.`when`(bendingBuddyApiForTest.getAllBendingBuddies())
-//                .thenReturn(
-//                    null
-//                )
-//
-//            val response = remoteDataSourceImplForTest.getAllBendingBuddies()
-//            assertThat(response).isInstanceOf(NetworkResponseState.Error::class.java)
-//        }
-//    }
+    /** Error state test of getAllBendingBuddies function */
+    @Test
+    fun `when getAllBendingBuddies return state is error`() {
+        runBlocking {
+            Mockito.`when`(bendingBuddyApiForTest.getAllBendingBuddies())
+                .thenReturn(
+                    null
+                )
+
+            val response = remoteDataSourceImplForTest.getAllBendingBuddies()
+
+            assertThat(response).isInstanceOf(NetworkResponseState.Error::class.java)
+        }
+    }
+
+    /** Success state test of getBendingBuddyByName function with Korra input */
+    @Test
+    fun `when getBendingBuddyByName with Korra parameter return state is success`() {
+        runBlocking {
+            Mockito.`when`(bendingBuddyApiForTest.getBendingBuddyByName(KORRA_PARAMETER))
+                .thenReturn(
+                    listOf(sampleBendingBuddyResponseItem)
+                )
+
+            val response = remoteDataSourceImplForTest.getBendingBuddyByName(KORRA_PARAMETER)
+
+            assertThat(response).isInstanceOf(NetworkResponseState.Success::class.java)
+        }
+    }
+
+    /** Error state test of getBendingBuddyByName function with Korra input */
+    @Test
+    fun `when getBendingBuddyByName with Korra parameter return state is error`() {
+        runBlocking {
+            Mockito.`when`(bendingBuddyApiForTest.getBendingBuddyByName(KORRA_PARAMETER))
+                .thenReturn(
+                    null
+                )
+
+            val response = remoteDataSourceImplForTest.getBendingBuddyByName(KORRA_PARAMETER)
+
+            assertThat(response).isInstanceOf(NetworkResponseState.Error::class.java)
+        }
+    }
 
 }
