@@ -73,9 +73,17 @@ dependencies {
     // Coil
     implementation "io.coil-kt:coil:$coil_version"
 
-    // Test
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    // JUnit
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
+
+    // Espresso
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+
+    // MockWebServer
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mock_webserver_version"
+
+    // Truth
+    testImplementation "com.google.truth:truth:$truth_version"
 
 }
