@@ -1,7 +1,7 @@
 package com.whale.bendingbuddies.domain.usecase
 
 import com.whale.bendingbuddies.data.NetworkResponseState
-import com.whale.bendingbuddies.domain.BendingBuddyEntity
+import com.whale.bendingbuddies.domain.entity.BendingBuddyEntity
 import kotlinx.coroutines.flow.Flow
 
 interface GetAllBendingBuddiesUseCase {

@@ -1,6 +1,6 @@
 package com.whale.bendingbuddies.di.repository
 
-import com.whale.bendingbuddies.data.repository.BendingBuddyRepository
+import com.whale.bendingbuddies.domain.repository.BendingBuddyRepository
 import com.whale.bendingbuddies.data.repository.BendingBuddyRepositoryImpl
 import dagger.Binds
 import dagger.Module

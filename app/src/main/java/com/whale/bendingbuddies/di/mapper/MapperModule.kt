@@ -4,7 +4,7 @@ import com.whale.bendingbuddies.data.dto.BendingBuddyResponseItem
 import com.whale.bendingbuddies.data.mapper.BendingBuddyListMapper
 import com.whale.bendingbuddies.data.mapper.BendingBuddyListMapperImpl
 import com.whale.bendingbuddies.data.mapper.BendingBuddyMapper
-import com.whale.bendingbuddies.domain.BendingBuddyEntity
+import com.whale.bendingbuddies.domain.entity.BendingBuddyEntity
 import com.whale.bendingbuddies.ui.detail.BendingBuddyDetailUiMapperImpl
 import com.whale.bendingbuddies.ui.detail.DetailUiData
 import com.whale.bendingbuddies.ui.home.BendingBuddyHomeUiMapperImpl

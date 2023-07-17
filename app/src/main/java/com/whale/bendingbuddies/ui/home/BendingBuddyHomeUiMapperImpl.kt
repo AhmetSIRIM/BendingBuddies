@@ -1,7 +1,7 @@
 package com.whale.bendingbuddies.ui.home
 
 import com.whale.bendingbuddies.data.mapper.BendingBuddyListMapper
-import com.whale.bendingbuddies.domain.BendingBuddyEntity
+import com.whale.bendingbuddies.domain.entity.BendingBuddyEntity
 import javax.inject.Inject
 
 class BendingBuddyHomeUiMapperImpl @Inject constructor() :

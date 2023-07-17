@@ -30,9 +30,7 @@ internal class RemoteDataSourceImplTest {
     fun `when getAllBendingBuddies return state is success`() {
         runBlocking {
             Mockito.`when`(bendingBuddyApiForTest.getAllBendingBuddies())
-                .thenReturn(
-                    listOf(sampleBendingBuddyResponseItem)
-                )
+                .thenReturn(listOf(sampleBendingBuddyResponseItem))
 
             val response = remoteDataSourceImplForTest.getAllBendingBuddies()
 
@@ -45,9 +43,7 @@ internal class RemoteDataSourceImplTest {
     fun `when getAllBendingBuddies return state is error`() {
         runBlocking {
             Mockito.`when`(bendingBuddyApiForTest.getAllBendingBuddies())
-                .thenReturn(
-                    null
-                )
+                .thenReturn(null)
 
             val response = remoteDataSourceImplForTest.getAllBendingBuddies()
 
@@ -60,9 +56,7 @@ internal class RemoteDataSourceImplTest {
     fun `when getBendingBuddyByName with Korra parameter return state is success`() {
         runBlocking {
             Mockito.`when`(bendingBuddyApiForTest.getBendingBuddyByName(KORRA_PARAMETER))
-                .thenReturn(
-                    listOf(sampleBendingBuddyResponseItem)
-                )
+                .thenReturn(listOf(sampleBendingBuddyResponseItem))
 
             val response = remoteDataSourceImplForTest.getBendingBuddyByName(KORRA_PARAMETER)
 
@@ -75,9 +69,7 @@ internal class RemoteDataSourceImplTest {
     fun `when getBendingBuddyByName with Korra parameter return state is error`() {
         runBlocking {
             Mockito.`when`(bendingBuddyApiForTest.getBendingBuddyByName(KORRA_PARAMETER))
-                .thenReturn(
-                    null
-                )
+                .thenReturn(null)
 
             val response = remoteDataSourceImplForTest.getBendingBuddyByName(KORRA_PARAMETER)
 

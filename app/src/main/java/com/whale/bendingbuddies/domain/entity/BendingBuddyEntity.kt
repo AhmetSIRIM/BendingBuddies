@@ -1,4 +1,4 @@
-package com.whale.bendingbuddies.domain
+package com.whale.bendingbuddies.domain.entity
 
 data class BendingBuddyEntity(
     val name: String,

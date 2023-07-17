@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.whale.bendingbuddies.R
 import com.whale.bendingbuddies.data.NetworkResponseState
 import com.whale.bendingbuddies.data.mapper.BendingBuddyListMapper
-import com.whale.bendingbuddies.domain.BendingBuddyEntity
+import com.whale.bendingbuddies.domain.entity.BendingBuddyEntity
 import com.whale.bendingbuddies.domain.usecase.GetAllBendingBuddiesUseCase
 import com.whale.bendingbuddies.domain.usecase.GetBendingBuddyByNameUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
