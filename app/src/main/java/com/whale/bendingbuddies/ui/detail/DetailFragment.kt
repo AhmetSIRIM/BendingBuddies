@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
+import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -40,31 +42,43 @@ class DetailFragment : Fragment() {
     private fun observeDetailUiState() {
         detailViewModel.bendingBuddyDetailUiState.observe(viewLifecycleOwner) {
             when (it) {
-                is DetailUiState.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        getString(it.message),
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
 
-                DetailUiState.Loading -> {
-                    binding.loadingProgressBar.isVisible = true
-                }
+                is DetailUiState.Error -> handleErrorDetailUiState(it.message)
 
-                is DetailUiState.Success -> {
-                    handleSuccessDetailUiState(it.detailUiData)
-                    binding.loadingProgressBar.isVisible = false
-                }
+                DetailUiState.Loading -> handleLoadingDetailUiState()
+
+                is DetailUiState.Success -> handleSuccessDetailUiState(it.detailUiData)
+
             }
         }
     }
 
+    private fun handleErrorDetailUiState(
+        @StringRes
+        stringRes: Int
+    ) {
+        Toast.makeText(requireContext(), stringRes, LENGTH_LONG).show()
+    }
+
+    private fun handleLoadingDetailUiState() {
+        binding.apply {
+            bendingBuddyDetail.isVisible = false
+            animationViewDetailLoading.isVisible = true
+        }
+    }
+
     private fun handleSuccessDetailUiState(detailUiData: DetailUiData) {
-        binding.bendingBuddyDetail.apply {
-            setBendingBuddyDetailData(detailUiData)
-            setNameTextSize(NAME_TEXT_SIZE_IN_SP)
-            setAffiliationTextSize(AFFILIATION_TEXT_SIZE_IN_SP)
+
+        binding.apply {
+
+            bendingBuddyDetail.apply {
+                setBendingBuddyDetailData(detailUiData)
+                setNameTextSize(NAME_TEXT_SIZE_IN_SP)
+                setAffiliationTextSize(AFFILIATION_TEXT_SIZE_IN_SP)
+            }
+
+            bendingBuddyDetail.isVisible = true
+            animationViewDetailLoading.isVisible = false
         }
     }
 

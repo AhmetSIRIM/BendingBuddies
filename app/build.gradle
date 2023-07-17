@@ -73,6 +73,9 @@ dependencies {
     // Coil
     implementation "io.coil-kt:coil:$coil_version"
 
+    // Lottie
+    implementation "com.airbnb.android:lottie:$lottie_version"
+
     // JUnit
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"

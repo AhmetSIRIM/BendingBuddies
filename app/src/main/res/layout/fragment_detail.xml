@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,16 +15,16 @@
         android:layout_height="match_parent"
         android:layout_margin="16dp">
 
-        <ProgressBar
-            android:id="@+id/loading_progress_bar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:padding="125dp"
-            android:visibility="gone"
-            tools:visibility="visible" />
-
     </com.whale.bendingbuddies.ui.component.BendingBuddyComponent>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView_detail_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation_loading"
+        tools:visibility="visible" />
 
 </FrameLayout>

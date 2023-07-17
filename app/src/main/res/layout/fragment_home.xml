@@ -34,15 +34,17 @@
         app:layout_constraintStart_toStartOf="@id/search_input_container"
         app:layout_constraintTop_toBottomOf="@id/search_input_container"
         app:spanCount="2"
-        tools:listitem="@layout/adapter_bending_buddy_item" />
+        tools:listitem="@layout/adapter_bending_buddy_item"
+        tools:visibility="visible" />
 
-    <ProgressBar
-        android:id="@+id/loading_progress_bar"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView_home_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:padding="130dp"
-        android:visibility="gone"
+        android:visibility="invisible"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation_loading"
         tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

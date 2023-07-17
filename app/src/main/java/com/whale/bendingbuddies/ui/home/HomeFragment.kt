@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
+import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.whale.bendingbuddies.databinding.FragmentHomeBinding
-import com.whale.bendingbuddies.utility.observeTextChanges
 import com.whale.bendingbuddies.utility.isLengthGreaterOrEqualTo
+import com.whale.bendingbuddies.utility.observeTextChanges
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
@@ -62,29 +64,36 @@ class HomeFragment : Fragment() {
         homeViewModel.bendingBuddyHomeUiState.observe(viewLifecycleOwner) {
             when (it) {
 
-                is HomeUiState.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        getString(it.message),
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
+                is HomeUiState.Error -> handleErrorHomeUiState(it.message)
 
-                HomeUiState.Loading -> {
-                    binding.loadingProgressBar.isVisible = true
-                }
+                HomeUiState.Loading -> handleLoadingHomeUiState()
 
-                is HomeUiState.Success -> {
-                    handleSuccessHomeUiState(it.homeUiDataList)
-                    binding.loadingProgressBar.isVisible = false
-                }
+                is HomeUiState.Success -> handleSuccessHomeUiState(it.homeUiDataList)
 
             }
         }
     }
 
+    private fun handleErrorHomeUiState(
+        @StringRes
+        stringRes: Int
+    ) {
+        Toast.makeText(requireContext(), stringRes, LENGTH_LONG).show()
+    }
+
+    private fun handleLoadingHomeUiState() {
+        binding.apply {
+            bendingBuddyListRecyclerView.isVisible = false
+            animationViewHomeLoading.isVisible = true
+        }
+    }
+
     private fun handleSuccessHomeUiState(homeUiDataList: List<HomeUiData>) {
         adapter.updateHomeUiDataList(homeUiDataList)
+        binding.apply {
+            bendingBuddyListRecyclerView.isVisible = true
+            animationViewHomeLoading.isVisible = false
+        }
     }
 
     @OptIn(FlowPreview::class)
@@ -94,15 +103,14 @@ class HomeFragment : Fragment() {
             .distinctUntilChanged()
             .onEach { inputText ->
                 when {
-                    inputText.isBlank() -> {
+                    (inputText.isBlank() && adapter.itemCount == 0) -> {
                         homeViewModel.getAllBendingBuddies()
                     }
                     inputText isLengthGreaterOrEqualTo MINIMUM_SEARCH_LENGTH -> {
                         homeViewModel.getBendingBuddyByName(inputText)
                     }
                 }
-            }
-            .launchIn(lifecycleScope)
+            }.launchIn(lifecycleScope)
     }
 
     companion object {
