@@ -103,9 +103,10 @@ class HomeFragment : Fragment() {
             .distinctUntilChanged()
             .onEach { inputText ->
                 when {
-                    (inputText.isBlank() && adapter.itemCount == 0) -> {
+                    (inputText.isBlank() && adapter.itemCount < MAXIMUM_RESPONSE_LIST_LENGTH_FOR_REQUEST_WITH_SPECIFIC_NAME_INPUT) -> {
                         homeViewModel.getAllBendingBuddies()
                     }
+
                     inputText isLengthGreaterOrEqualTo MINIMUM_SEARCH_LENGTH -> {
                         homeViewModel.getBendingBuddyByName(inputText)
                     }
@@ -115,7 +116,11 @@ class HomeFragment : Fragment() {
 
     companion object {
         private const val MINIMUM_SEARCH_LENGTH = 2
+
         private const val SEARCH_DEBOUNCE_TIME_IN_MILLISECONDS = 300L
+
+        // TODO (Ahmet) ---> The line below is based on an assumption, if I find a better approach I will implement it.
+        private const val MAXIMUM_RESPONSE_LIST_LENGTH_FOR_REQUEST_WITH_SPECIFIC_NAME_INPUT = 20
     }
 
 }
