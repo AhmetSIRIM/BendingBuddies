@@ -76,6 +76,9 @@ dependencies {
     // Lottie
     implementation "com.airbnb.android:lottie:$lottie_version"
 
+    // Splash
+    implementation "androidx.core:core-splashscreen:$splash_version"
+
     // JUnit
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
