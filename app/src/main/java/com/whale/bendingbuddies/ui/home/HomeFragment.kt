@@ -107,7 +107,7 @@ class HomeFragment : Fragment() {
                         homeViewModel.getAllBendingBuddies()
                     }
 
-                    inputText isLengthGreaterOrEqualTo MINIMUM_SEARCH_LENGTH -> {
+                    (inputText isLengthGreaterOrEqualTo MINIMUM_SEARCH_LENGTH && adapter.itemCount > MAXIMUM_RESPONSE_LIST_LENGTH_FOR_REQUEST_WITH_SPECIFIC_NAME_INPUT) -> {
                         homeViewModel.getBendingBuddyByName(inputText)
                     }
                 }
