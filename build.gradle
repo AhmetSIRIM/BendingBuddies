@@ -45,4 +45,6 @@ ext {
 
     mockito_kotlin_version = "4.0.0"
 
+    turbine_version = "1.0.0"
+
 }

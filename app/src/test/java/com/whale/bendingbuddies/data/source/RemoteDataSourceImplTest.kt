@@ -25,9 +25,9 @@ internal class RemoteDataSourceImplTest {
         remoteDataSourceImplForTest = RemoteDataSourceImpl(bendingBuddyApiForTest)
     }
 
-    /** Success state test of getAllBendingBuddies function */
+    /** Try-block test of getAllBendingBuddies function of RemoteDataSourceImpl */
     @Test
-    fun `when getAllBendingBuddies return state is success`() {
+    fun `when getAllBendingBuddies pass the try-block`() {
         runBlocking {
             Mockito.`when`(bendingBuddyApiForTest.getAllBendingBuddies())
                 .thenReturn(listOf(sampleBendingBuddyResponseItem))
@@ -38,9 +38,9 @@ internal class RemoteDataSourceImplTest {
         }
     }
 
-    /** Error state test of getAllBendingBuddies function */
+    /** Catch-block test of getAllBendingBuddies function of RemoteDataSourceImpl */
     @Test
-    fun `when getAllBendingBuddies return state is error`() {
+    fun `when getAllBendingBuddies can not pass the try-block`() {
         runBlocking {
             Mockito.`when`(bendingBuddyApiForTest.getAllBendingBuddies())
                 .thenReturn(null)
@@ -51,9 +51,9 @@ internal class RemoteDataSourceImplTest {
         }
     }
 
-    /** Success state test of getBendingBuddyByName function with Korra input */
+    /** Try-block test of getBendingBuddyByName function of RemoteDataSourceImpl with Korra input */
     @Test
-    fun `when getBendingBuddyByName with Korra parameter return state is success`() {
+    fun `when getBendingBuddyByName with Korra input pass the try-block`() {
         runBlocking {
             Mockito.`when`(bendingBuddyApiForTest.getBendingBuddyByName(KORRA_PARAMETER))
                 .thenReturn(listOf(sampleBendingBuddyResponseItem))
@@ -64,9 +64,9 @@ internal class RemoteDataSourceImplTest {
         }
     }
 
-    /** Error state test of getBendingBuddyByName function with Korra input */
+    /** Catch-block test of getBendingBuddyByName function of RemoteDataSourceImpl with Korra input */
     @Test
-    fun `when getBendingBuddyByName with Korra parameter return state is error`() {
+    fun `when getBendingBuddyByName with Korra input can not pass the try-block`() {
         runBlocking {
             Mockito.`when`(bendingBuddyApiForTest.getBendingBuddyByName(KORRA_PARAMETER))
                 .thenReturn(null)

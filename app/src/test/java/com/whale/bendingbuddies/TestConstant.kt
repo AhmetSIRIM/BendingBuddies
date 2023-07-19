@@ -20,3 +20,12 @@ val sampleBendingBuddyResponseItem = BendingBuddyResponseItem(
     KORRA_PARAMETER,
     null,
 )
+
+enum class NetworkResponseStateEnumForTest {
+    ERROR,
+    SUCCESS,
+    LOADING
+}
+
+@VisibleForTesting
+val sampleUnknownErrorException = Exception("An unknown error occurred")

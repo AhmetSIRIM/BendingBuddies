@@ -95,4 +95,7 @@ dependencies {
     // Mockito
     testImplementation "org.mockito:mockito-core:$mockito_kotlin_version"
 
+    // Turbine
+    testImplementation "app.cash.turbine:turbine:$turbine_version"
+
 }
