@@ -1,9 +1,11 @@
 package com.whale.bendingbuddies.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.annotation.StringRes
@@ -105,13 +107,21 @@ class HomeFragment : Fragment() {
                 when {
                     (inputText.isBlank() && adapter.itemCount < MAXIMUM_RESPONSE_LIST_LENGTH_FOR_REQUEST_WITH_SPECIFIC_NAME_INPUT) -> {
                         homeViewModel.getAllBendingBuddies()
+                        hideKeyboard()
                     }
 
                     (inputText isLengthGreaterOrEqualTo MINIMUM_SEARCH_LENGTH && adapter.itemCount > MAXIMUM_RESPONSE_LIST_LENGTH_FOR_REQUEST_WITH_SPECIFIC_NAME_INPUT) -> {
                         homeViewModel.getBendingBuddyByName(inputText)
+                        hideKeyboard()
                     }
                 }
             }.launchIn(lifecycleScope)
+    }
+
+    private fun hideKeyboard() {
+        val inputMethodManager =
+            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        inputMethodManager?.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 
     companion object {
