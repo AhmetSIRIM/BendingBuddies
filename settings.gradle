@@ -14,3 +14,12 @@ dependencyResolutionManagement {
 }
 rootProject.name = "BendingBuddies"
 include ':app'
+include ':core'
+include ':core:data'
+include ':core:common'
+include ':core:domain'
+include ':core:presentation'
+include ':feature'
+include ':feature:home'
+include ':feature:detail'
+include ':navigation'

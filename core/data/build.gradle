@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.bendingbuddies.core.data'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_18
+        targetCompatibility JavaVersion.VERSION_18
+    }
+    kotlinOptions {
+        jvmTarget = '18'
+    }
+}
+
+dependencies {
+
+    implementation project(path: ':core:common')
+    implementation project(path: ':core:domain')
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // Hilt
+    api "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    // MockWebServer
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mock_webserver_version"
+
+    // Truth
+    testImplementation "com.google.truth:truth:$truth_version"
+
+    // Mockito
+    testImplementation "org.mockito:mockito-core:$mockito_kotlin_version"
+
+    // Turbine
+    testImplementation "app.cash.turbine:turbine:$turbine_version"
+
+}

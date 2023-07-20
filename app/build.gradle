@@ -36,31 +36,28 @@ android {
     buildFeatures {
         viewBinding true
     }
+    sourceSets {
+        getByName("debug").res.srcDirs(
+                "$rootDir/navigation/src/main/sharedRes"
+        )
+    }
 }
 
 dependencies {
 
+    implementation project(path: ':core:presentation')
+    implementation project(path: ':core:domain')
+    implementation project(path: ':core:data')
+    implementation project(path: ':core:common')
+    implementation project(path: ':feature:home')
+    implementation project(path: ':feature:detail')
+    implementation project(path: ':navigation')
+
     // AndroidXCore
     implementation "androidx.core:core-ktx:$android_core_ktx_version"
 
-    // AndroidXFragment
-    implementation "androidx.fragment:fragment-ktx:$android_fragment_ktx_version"
-
     // AppCompat
     implementation "androidx.appcompat:appcompat:$app_compat_version"
-
-    // Material
-    implementation "com.google.android.material:material:$material_version"
-
-    // ConstraintLayout
-    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
-
-    // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
-    // Gson
-    implementation "com.google.code.gson:gson:$gson_version"
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
@@ -70,32 +67,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
-    // Coil
-    implementation "io.coil-kt:coil:$coil_version"
-
-    // Lottie
-    implementation "com.airbnb.android:lottie:$lottie_version"
-
     // Splash
     implementation "androidx.core:core-splashscreen:$splash_version"
-
-    // JUnit
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
-
-    // Espresso
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
-
-    // MockWebServer
-    testImplementation "com.squareup.okhttp3:mockwebserver:$mock_webserver_version"
-
-    // Truth
-    testImplementation "com.google.truth:truth:$truth_version"
-
-    // Mockito
-    testImplementation "org.mockito:mockito-core:$mockito_kotlin_version"
-
-    // Turbine
-    testImplementation "app.cash.turbine:turbine:$turbine_version"
 
 }
