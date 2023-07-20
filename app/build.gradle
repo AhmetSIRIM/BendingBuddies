@@ -53,12 +53,6 @@ dependencies {
     implementation project(path: ':feature:detail')
     implementation project(path: ':navigation')
 
-    // AppCompat
-    implementation "androidx.appcompat:appcompat:$app_compat_version"
-
-    // AndroidXCore
-    implementation "androidx.core:core-ktx:$android_core_ktx_version"
-
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"

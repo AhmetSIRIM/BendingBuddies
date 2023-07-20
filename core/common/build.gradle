@@ -35,10 +35,10 @@ android {
 dependencies {
 
     // AppCompat
-    implementation "androidx.appcompat:appcompat:$app_compat_version"
+    api "androidx.appcompat:appcompat:$app_compat_version"
 
     // AndroidXCore
-    implementation "androidx.core:core-ktx:$android_core_ktx_version"
+    api "androidx.core:core-ktx:$android_core_ktx_version"
 
     // Hilt
     api "com.google.dagger:hilt-android:$hilt_version"
