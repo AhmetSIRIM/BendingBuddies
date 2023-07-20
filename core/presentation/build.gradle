@@ -37,8 +37,14 @@ dependencies {
 
     implementation project(path: ':core:common')
 
-    // AndroidXFragment
-    implementation "androidx.fragment:fragment-ktx:$android_fragment_ktx_version"
+    // AppCompat
+    implementation "androidx.appcompat:appcompat:$app_compat_version"
+
+    // AndroidXCore
+    implementation "androidx.core:core-ktx:$android_core_ktx_version"
+
+    // Material
+    implementation "com.google.android.material:material:$material_version"
 
     // Coil
     implementation "io.coil-kt:coil:$coil_version"
@@ -49,10 +55,4 @@ dependencies {
     // Splash
     implementation "androidx.core:core-splashscreen:$splash_version"
 
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

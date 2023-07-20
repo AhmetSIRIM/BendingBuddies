@@ -35,28 +35,18 @@ android {
     }
 }
 
-
 dependencies {
 
-    implementation project(path: ":core:common")
-    implementation project(path: ":core:presentation")
-    implementation project(path: ":core:domain")
-    implementation project(path: ":navigation")
+    implementation project(path: ':core:common')
+    implementation project(path: ':core:presentation')
+    implementation project(path: ':core:domain')
+    implementation project(path: ':navigation')
 
-    // AndroidXFragment
-    implementation "androidx.fragment:fragment-ktx:$android_fragment_ktx_version"
+    // AndroidXCore
+    implementation "androidx.core:core-ktx:$android_core_ktx_version"
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
-//    // Lottie
-//    implementation "com.airbnb.android:lottie:$lottie_version"
-
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
