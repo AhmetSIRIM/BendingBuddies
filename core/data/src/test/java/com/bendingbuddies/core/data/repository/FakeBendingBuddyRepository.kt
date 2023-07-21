@@ -48,7 +48,9 @@ internal class FakeBendingBuddyRepository(
                 NetworkResponseStateEnumForTest.LOADING -> emit(NetworkResponseState.Loading)
 
             }
+
         }
+
     }
 
     override fun getBendingBuddyByName(bendingBuddyName: String): Flow<NetworkResponseState<List<BendingBuddyEntity>>> {
@@ -78,7 +80,10 @@ internal class FakeBendingBuddyRepository(
                 NetworkResponseStateEnumForTest.LOADING -> emit(NetworkResponseState.Loading)
 
             }
+
         }
+
     }
+
 
 }

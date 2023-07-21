@@ -17,8 +17,7 @@ internal class BendingBuddyRepositoryTest {
 
     @Before
     fun setup() {
-        bendingBuddyListMapperImpl =
-            BendingBuddyListMapperImpl()
+        bendingBuddyListMapperImpl = BendingBuddyListMapperImpl()
         fakeBendingBuddyRepository = FakeBendingBuddyRepository(bendingBuddyListMapperImpl)
     }
 
@@ -35,6 +34,7 @@ internal class BendingBuddyRepositoryTest {
             }
 
         }
+
     }
 
     /** Success state test of getAllBendingBuddies function */
@@ -57,6 +57,7 @@ internal class BendingBuddyRepositoryTest {
             }
 
         }
+
     }
 
     /** Error state test of getAllBendingBuddies function */
@@ -79,6 +80,7 @@ internal class BendingBuddyRepositoryTest {
             }
 
         }
+
     }
 
     /** Loading state test of getBendingBuddyByName function with Korra input */
@@ -94,6 +96,7 @@ internal class BendingBuddyRepositoryTest {
             }
 
         }
+
     }
 
     /** Success state test of getBendingBuddyByName function with Korra input */
@@ -116,6 +119,7 @@ internal class BendingBuddyRepositoryTest {
             }
 
         }
+
     }
 
     /** Error state test of getBendingBuddyByName function with Korra input */
@@ -138,6 +142,7 @@ internal class BendingBuddyRepositoryTest {
             }
 
         }
+
     }
 
 }

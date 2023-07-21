@@ -40,4 +40,13 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
+    // Truth
+    testImplementation "com.google.truth:truth:$truth_version"
+
+    // Mockito
+    testImplementation "org.mockito:mockito-core:$mockito_kotlin_version"
+
+    // Turbine
+    testImplementation "app.cash.turbine:turbine:$turbine_version"
+
 }
