@@ -34,12 +34,6 @@ android {
 
 dependencies {
 
-    // AppCompat
-    api "androidx.appcompat:appcompat:$app_compat_version"
-
-    // AndroidXCore
-    api "androidx.core:core-ktx:$android_core_ktx_version"
-
     // Hilt
     api "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"

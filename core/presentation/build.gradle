@@ -37,6 +37,12 @@ dependencies {
 
     implementation project(path: ':core:common')
 
+    // AppCompat
+    implementation "androidx.appcompat:appcompat:$app_compat_version"
+
+    // AndroidXCore
+    implementation "androidx.core:core-ktx:$android_core_ktx_version"
+
     // Material
     implementation "com.google.android.material:material:$material_version"
 
